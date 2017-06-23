@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/second">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/fourth_question"
+        android:textSize="20sp"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/textView4" />
+    <EditText
+        android:id="@+id/fourth_edit_text"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:hint=" Днів на місяць"/>
+
+
+</RelativeLayout>

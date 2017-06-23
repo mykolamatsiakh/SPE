@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">SPE</string>
     <string name="sign_up">Sign in with Google</string>
+    <string name="first_question">Яка пропорція (%) вдалих і невдалих днів у Ваших взаєминах?</string>
+    <string name="succesfull">Вдалі</string>
+    <string name="unsuccessful">Невдалі</string>
+    <string name="second_question">Наскільки Ви задоволені рівнем своїх взаємин?</string>
+    <string name="third_question">Який рівень взаємин Ви хотіли б мати?</string>
+    <string name="fourth_question">Скільки часу Ви готові вкласти у такий рівень взаємин?</string>
 </resources>
