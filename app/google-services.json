@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1028819211322",
+    "project_id": "firebase-spee"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028819211322:android:39ea9ea35fd6fbea",
+        "android_client_info": {
+          "package_name": "com.example.mykola.spe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028819211322-ksli6plb95dhdt69s7d7obiga2mfm7to.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mykola.spe",
+            "certificate_hash": "a68c0c19905aec1dc1c96d1bee60e67046a42ea6"
+          }
+        },
+        {
+          "client_id": "1028819211322-5nm3iejd5e0d0bum22kn349km9t69csf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEVNCqTA19-kct-GvuM1lqJ2x0D_COsd4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
