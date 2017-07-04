@@ -23,5 +23,17 @@
         android:layout_marginTop="13dp"
         android:hint=" Днів на місяць"/>
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:textAllCaps="false"
+        android:layout_below="@+id/fourth_edit_text"
+        android:layout_centerHorizontal="true"
+        android:text="@string/next_button"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/next_button"/>
+
 
 </RelativeLayout>

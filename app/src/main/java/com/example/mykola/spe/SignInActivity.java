@@ -2,7 +2,9 @@ package com.example.mykola.spe;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,10 +26,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
+    private static final int RC_PERM_GET_ACCOUNTS = 2;
 
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            getStartIntent();
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
@@ -86,6 +89,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.button_sign_in).setVisibility(View.GONE);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
             findViewById(R.id.button_sign_in).setVisibility(View.VISIBLE);
@@ -102,4 +106,40 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         Intent intent = new Intent(SignInActivity.this, FirstQuestionActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
+    }
+
+    private void showSignedInUI() {
+        updateUI(true);
+    }
+
+    private void showSignedOutUI() {
+        updateUI(false);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
+        if (requestCode == RC_PERM_GET_ACCOUNTS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showSignedInUI();
+            } else {
+                Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
+            }
+        }
+    }
+
+
 }

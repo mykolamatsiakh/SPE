@@ -18,4 +18,15 @@
         android:layout_gravity="center"
         android:hint="   1-100"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/next_button"
+        android:text="@string/next_button"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:layout_marginLeft="140dp"/>
+
 </LinearLayout>

@@ -13,6 +13,9 @@ import android.view.ViewGroup;
  */
 
 public class SecondQuestionActivity extends AppCompatActivity {
-
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.second_question);
+    }
 }
