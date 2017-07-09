@@ -1,6 +1,7 @@
 package com.example.mykola.spe;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -15,14 +16,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by mykola on 26.06.17.
  */
 
-public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -36,7 +36,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.sign_activity);
+        mStatusTextView = (TextView) findViewById(R.id.status);
+
+        findViewById(R.id.button_sign_in).setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -47,13 +50,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        SignInButton signInButton = (SignInButton) findViewById(R.id.button_sign_in);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });
 
     }
 
@@ -79,7 +75,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            updateUI(true);
+            startFirstQuestionActivity();
+
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -102,10 +99,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
 
-    private void getStartIntent() {
-        Intent intent = new Intent(SignInActivity.this, FirstQuestionActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void onStart() {
@@ -141,5 +134,14 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         }
     }
 
+    private void startFirstQuestionActivity() {
+        Intent intent = new Intent(SignInActivity.this, FirstQuestionActivity.class);
+        startActivity(intent);
+    }
 
-}
+
+    @Override
+    public void onClick(View v) {
+        signIn();
+    }
+    }
