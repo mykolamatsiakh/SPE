@@ -10,12 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
@@ -30,8 +32,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
-    private ProgressDialog mProgressDialog;
-   
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,9 +140,29 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         startActivity(intent);
     }
 
+    private boolean lacksInternetConnection() {
+        if(ConnectionHelper.checkInternetConnection(SignInActivity.this)){
+            return false;
+        }
+        showConnectionError();
+        return true;
+    }
+
+    private void showConnectionError(){
+        showToast("Немає інтернет з'єднання");
+    }
+
+    private void showToast(String message){
+        Toast.makeText(SignInActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
 
     @Override
     public void onClick(View v) {
-        signIn();
-    }
+        if(!lacksInternetConnection()) {
+            signIn();
+        }
+        else showConnectionError();
+
+     }
     }
