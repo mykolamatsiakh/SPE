@@ -14,6 +14,13 @@ public class ThanksActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanks);
+        findViewById(R.id.finish_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.exit(0);
+
+            }
+        });
 
     }
 }

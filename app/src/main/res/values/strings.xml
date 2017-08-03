@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SPE</string>
+    <string name="ok">Ок</string>
     <string name="sign_up">Sign In with Google</string>
     <string name="first_question">Яка пропорція (%) вдалих і невдалих днів у Ваших взаєминах?</string>
     <string name="succesfull">Вдалі</string>
@@ -65,6 +66,44 @@
     <string name="fifth_question">Який місячний бюджет Ви готові виділити?</string>
     <string name="next_button">Далі</string>
     <string name="thanks_string">Дякуємо за відповіді. Незабаром ми надішлемо завдання, які покращать Ваші відносини.\n З повагою, SPE.</string>
-    <string name="buy_subscription">Купити і подарувати абонемент у салон краси</string>
     
+    //User tasks
+    <string name="buy_subscription">Купити і подарувати абонемент у салон краси</string>
+    <string name="buy_procedure_in_beauty_salon">Купити і подарувати процедуру у косметолога</string>
+    <string name="buy_and_give_flowers">Купити і подарувати квіти</string>
+    <string name="buy_and_give_decoration">Купити і подарувати прикрасу</string>
+    <string name="buy_book_or_journal">Купити книгу чи журнал, яку/ий вона хоче/читає</string>
+    <string name="go_to_restourant">Повести в ресторан</string>
+    <string name="buy_ticket_for_the_restaurant">Купти квитки і запросити на концерт</string>
+    <string name="buy_trinket">Купити маленьку приємну дрібничку (блокнот, веселу ручку, мяку іграшку тощо)</string>
+    <string name="invite_to_cinema">Запросити в кіно</string>
+    <string name="buy_gift">Купити подарунок (гаманець, скриньку тощо)</string>
+    <string name="invite_to_theatre">Запросити в театр</string>
+    <string name="give_a_trip">Подарувати подорож</string>
+    <string name="buy_chocolate">Купити їй шоколадку, або інший улюблений смаколик</string>
+    <string name="go_shopping">Піти на закупи за одягом</string>
+    <string name="get_from_the_job">Забрати з роботи</string>
+    <string name="clean_up_room">Прибрати вдома</string>
+    <string name="wash_dishes">Помити посуд розвантажити або завантажити посудомийну машину</string>
+    <string name="clean_toilet">Помити унітаз</string>
+    <string name="clean_washbasin">Помити умвивальник</string>
+    <string name="clean_mirror">Помити дзеркало</string>
+    <string name="clean_window">Помити вікна</string>
+    <string name="make_willing_thing">Зробити те, що вона давно просила (ремон крану, пересування дивану)</string>
+    <string name="get_children">Забрати дітей з садка/школи і піти з нею гуляти</string>
+    <string name="cook_dish">Приготувати їсти</string>
+    <string name="make_things_in_order">Зробити порядок на своїй поличці</string>
+    <string name="ask_about_passed_day">Запитати як у неї пройшов день</string>
+    <string name="make_compliment_about_appearence">Зробити комплімент про зовнішній вигляд</string>
+    <string name="make_compliment_about_clothes">Зробити комплімент про одяг</string>
+    <string name="make_compliment_about_taste">Зробити компілмент про смак</string>
+    <string name="make_compliment_about_nice_solution">Зробити компілмент щодо розумності рішення</string>
+    <string name="thank_for_passed_dinner">Подякувати за вчорашню вечерю</string>
+    <string name="sorry_about_inattention">Попросити пробачення за минулу неуважність</string>
+    <string name="ask_about_dreams">Розпитати про її мрії</string>
+    <string name="promise_around_the_world_trip">Пообіцяти мандрівку навколо світу</string>
+    <string name="thanks_for_her">Подякувати за те, що вона є у житті</string>
+    <string name="ask_about_help_needed">Запитати чи потрібна їй якась допомога</string>
+    <string name="celebrate_in_love">Освідчитись у коханні</string>
+
 </resources>
