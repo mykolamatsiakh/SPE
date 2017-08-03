@@ -18,6 +18,7 @@
     <EditText
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:inputType="number"
         android:hint="    1-100"
         android:layout_gravity = "center"
         android:id="@+id/editText2"

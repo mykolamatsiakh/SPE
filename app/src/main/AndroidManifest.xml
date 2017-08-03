@@ -4,6 +4,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
 
     <application
         android:allowBackup="true"
@@ -26,6 +29,19 @@
         <activity android:name=".SecondQuestionActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".ThirdQuestionActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".FourthQuestionActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".FifthQuestionActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ThanksActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

@@ -19,12 +19,13 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_below="@+id/textView4"
+        android:inputType="number"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
         android:hint=" Днів на місяць"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/next_button4"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:textAllCaps="false"

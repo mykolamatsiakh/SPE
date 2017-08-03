@@ -76,8 +76,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            startFirstQuestionActivity();
-
+            updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -87,6 +86,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.button_sign_in).setVisibility(View.GONE);
+            startFirstQuestionActivity();
 
         } else {
             mStatusTextView.setText(R.string.signed_out);
@@ -164,5 +164,5 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         }
         else showConnectionError();
 
-     }
     }
+}

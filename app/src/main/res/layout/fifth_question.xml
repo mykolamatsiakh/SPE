@@ -20,6 +20,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:inputType="number"
         android:hint="     грн"/>
 
     <Button

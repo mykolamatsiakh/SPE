@@ -5,7 +5,7 @@
     android:background="@drawable/second">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:text="@string/third_question"
         android:textSize="20sp"
         android:textColor="@color/colorBlack"
@@ -16,10 +16,11 @@
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:hint="   1-100"/>
+        android:hint="   1-100"
+        android:inputType="number"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/next_button3"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:background="@drawable/next_button"
