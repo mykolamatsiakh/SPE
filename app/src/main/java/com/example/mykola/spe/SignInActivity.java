@@ -152,7 +152,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         showToast("Немає інтернет з'єднання");
     }
 
-    private void showToast(String message){
+    public void showToast(String message){
         Toast.makeText(SignInActivity.this, message, Toast.LENGTH_LONG).show();
     }
 

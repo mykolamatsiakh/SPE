@@ -74,7 +74,7 @@
     <string name="buy_and_give_decoration">Купити і подарувати прикрасу</string>
     <string name="buy_book_or_journal">Купити книгу чи журнал, яку/ий вона хоче/читає</string>
     <string name="go_to_restourant">Повести в ресторан</string>
-    <string name="buy_ticket_for_the_restaurant">Купти квитки і запросити на концерт</string>
+    <string name="buy_ticket_for_the_restaurant">Купити квитки і запросити на концерт</string>
     <string name="buy_trinket">Купити маленьку приємну дрібничку (блокнот, веселу ручку, мяку іграшку тощо)</string>
     <string name="invite_to_cinema">Запросити в кіно</string>
     <string name="buy_gift">Купити подарунок (гаманець, скриньку тощо)</string>
@@ -86,10 +86,10 @@
     <string name="clean_up_room">Прибрати вдома</string>
     <string name="wash_dishes">Помити посуд розвантажити або завантажити посудомийну машину</string>
     <string name="clean_toilet">Помити унітаз</string>
-    <string name="clean_washbasin">Помити умвивальник</string>
+    <string name="clean_washbasin">Помити умивальник</string>
     <string name="clean_mirror">Помити дзеркало</string>
     <string name="clean_window">Помити вікна</string>
-    <string name="make_willing_thing">Зробити те, що вона давно просила (ремон крану, пересування дивану)</string>
+    <string name="make_willing_thing">Зробити те, що вона давно просила (ремонт крану, пересування дивану)</string>
     <string name="get_children">Забрати дітей з садка/школи і піти з нею гуляти</string>
     <string name="cook_dish">Приготувати їсти</string>
     <string name="make_things_in_order">Зробити порядок на своїй поличці</string>
