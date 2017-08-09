@@ -16,12 +16,12 @@
         android:id="@+id/textView3" />
 
     <EditText
+        android:id="@+id/relationsLevel"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:inputType="number"
         android:hint="    1-100"
         android:layout_gravity = "center"
-        android:id="@+id/editText2"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
 
@@ -35,7 +35,7 @@
         android:background="@drawable/next_button"
         android:textAllCaps="false"
         android:layout_marginTop="22dp"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/relationsLevel"
         android:layout_centerHorizontal="true" />
 
 

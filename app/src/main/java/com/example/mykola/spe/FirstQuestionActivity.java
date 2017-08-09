@@ -10,52 +10,35 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 
 /**
  * Created by mykola on 22.06.17.
  */
 
 
-public class FirstQuestionActivity extends AppCompatActivity {
+public class FirstQuestionActivity extends AppCompatActivity implements View.OnClickListener{
     private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 0;
-    private EditText SuccesfullDays;
-    private EditText UnsuccesfulDays;
+    EditText SuccesfullDays;
+    EditText UnsuccesfulDays;
+    int Sum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_question);
         SuccesfullDays = (EditText)findViewById(R.id.first_question_succesfull);
         UnsuccesfulDays = (EditText)findViewById(R.id.first_question_unsuccesfull);
-        findViewById(R.id.first_next_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FirstQuestionActivity.this, SecondQuestionActivity.class);
-                startActivity(intent);
+        findViewById(R.id.first_next_button).setOnClickListener(this);
 
-            }
-        });
         // Here, thisActivity is the current activity
-
         requestPermission();
         if (!hasPermissions()) {
             return;
         }
     }
-
-    private boolean checkInput() {
-            if ( Integer.parseInt(SuccesfullDays.getText().toString().trim())+ Integer.parseInt(UnsuccesfulDays.getText().toString().trim())== 100) {
-                return true;
-            }
-            else return false;
-
-        }
-
-    private boolean isEmpty() {
-        if (SuccesfullDays.getText().toString().trim().length() == 0 || UnsuccesfulDays.getText().toString().trim().length() == 0) {
-          return false;
-        }
-        else return true;
-    }
+    
 
     private void requestPermission() {
         String[] permissions = new String[]{
@@ -74,11 +57,34 @@ public class FirstQuestionActivity extends AppCompatActivity {
             return false;
     }
 
+
     private void showToast(String message) {
         Toast.makeText(FirstQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onClick(View view) {
+        String firstAnswer = SuccesfullDays.getText().toString().trim();
+        String secondAnswer = UnsuccesfulDays.getText().toString().trim();
+        if(firstAnswer.length() != 0 && secondAnswer.length() !=0){
+            int FirstAnswer = Integer.parseInt(SuccesfullDays.getText().toString());
+            int SecondAnswer = Integer.parseInt(UnsuccesfulDays.getText().toString());
+            int Sum = FirstAnswer +SecondAnswer;
+                if(Sum == 100) {
+                    Intent intent = new Intent(FirstQuestionActivity.this, SecondQuestionActivity.class);
+                    startActivity(intent);
+                }
+                else showToast("Ви не заповнили всі поля або пропорція неправильна");
+        }
+        else
+            showToast("Ви не заповнили всі поля або пропорція неправильна");
 
     }
+
+
+
+
+
+}
 
 

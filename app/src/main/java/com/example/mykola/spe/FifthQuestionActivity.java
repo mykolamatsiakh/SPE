@@ -1,13 +1,11 @@
 package com.example.mykola.spe;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-
-import java.net.URI;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -36,21 +34,25 @@ public class FifthQuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(FifthQuestionActivity.this, ThanksActivity.class);
                 startActivity(intent);
-                addNewReminder();
+             //   addNewReminder( ,R.string.ask_about_dreams);
             }
         });
 
     }
 
-    private void addNewReminder() {
+    private void addNewReminder(Calendar cal, int description, int dayOfweek) {
+        Calendar calendar = Calendar.getInstance();
         ContentResolver cr = this.getContentResolver();
         ContentValues cv = new ContentValues();
         cv.put(CalendarContract.Events.TITLE, "SPE");
-        cv.put(CalendarContract.Events.DESCRIPTION, getString(R.string.buy_subscription));
-        cv.put(CalendarContract.Events.DTSTART, Calendar.getInstance().getTimeInMillis());
-        cv.put(CalendarContract.Events.DTEND, Calendar.getInstance().getTimeInMillis() + 60 * 60 * 1000);
+        cv.put(CalendarContract.Events.DESCRIPTION, getString(description));
         cv.put(CalendarContract.Events.CALENDAR_ID, 1);
         cv.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
+        cv.put(CalendarContract.Events.HAS_ALARM, true);
+        cv.put(CalendarContract.Events.DTSTART, calendar.get(dayOfweek));
+
+
+
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
