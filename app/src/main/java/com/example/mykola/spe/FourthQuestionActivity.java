@@ -21,7 +21,6 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.fourth_question);
         findViewById(R.id.next_button4).setOnClickListener(this);
         mEditText = (EditText) findViewById(R.id.daysPerMonth);
-
     }
 
     @Override
@@ -31,7 +30,6 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
             startActivity(intent);
         }
         else showToast("Оберіть к-сть днів від 1 до 31");
-
     }
 
     private boolean checkInput() {

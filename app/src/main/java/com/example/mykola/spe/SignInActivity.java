@@ -33,7 +33,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +49,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
-
     }
 
     private void signIn() {
@@ -62,7 +59,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -91,7 +87,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         } else {
             mStatusTextView.setText(R.string.signed_out);
             findViewById(R.id.button_sign_in).setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -99,7 +94,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     public void onConnectionFailed( ConnectionResult connectionResult) {
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
-
 
     @Override
     protected void onStart() {
@@ -115,10 +109,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
     private void showSignedInUI() {
         updateUI(true);
-    }
-
-    private void showSignedOutUI() {
-        updateUI(false);
     }
 
     @Override
@@ -156,13 +146,12 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         Toast.makeText(SignInActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
-
     @Override
     public void onClick(View v) {
         if(!lacksInternetConnection()) {
             signIn();
         }
         else showConnectionError();
-
     }
+
 }

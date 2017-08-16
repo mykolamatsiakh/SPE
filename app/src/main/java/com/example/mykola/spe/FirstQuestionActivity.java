@@ -22,7 +22,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
     private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 0;
     EditText SuccesfullDays;
     EditText UnsuccesfulDays;
-    int Sum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
             return;
         }
     }
-    
 
     private void requestPermission() {
         String[] permissions = new String[]{
@@ -56,7 +54,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
         } else
             return false;
     }
-
 
     private void showToast(String message) {
         Toast.makeText(FirstQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -80,10 +77,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
             showToast("Ви не заповнили всі поля або пропорція неправильна");
 
     }
-
-
-
-
 
 }
 

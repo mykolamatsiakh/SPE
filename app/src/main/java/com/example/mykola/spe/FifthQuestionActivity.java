@@ -4,8 +4,11 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+
+import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -24,8 +27,6 @@ import android.widget.Toast;
  */
 
 public class FifthQuestionActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button mNextButton;
-    Context context;
     private EditText mEditText;
 
     @Override
@@ -34,11 +35,9 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
         mEditText = (EditText) findViewById(R.id.monthBudget);
-
     }
 
-    private void addNewReminder(Calendar cal, int description, int dayOfweek) {
-        Calendar calendar = Calendar.getInstance();
+    private void addNewReminder(int description, int year, int month, int day, int hour) {
         ContentResolver cr = this.getContentResolver();
         ContentValues cv = new ContentValues();
         cv.put(CalendarContract.Events.TITLE, "SPE");
@@ -46,32 +45,36 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         cv.put(CalendarContract.Events.CALENDAR_ID, 1);
         cv.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
         cv.put(CalendarContract.Events.HAS_ALARM, true);
-        cv.put(CalendarContract.Events.DTSTART, calendar.get(dayOfweek));
-
-
+        cv.put(CalendarContract.Events.DTSTART, pickDate(year, month, day,hour));
+        cv.put(CalendarContract.Events.DTEND, pickDate(year, month, day,hour+1));
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
+            //                                          int[]    grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, cv);
-
     }
 
+    public static long pickDate(int year, int month, int day, int hour)
+    {
+        Calendar rightNow = Calendar.getInstance();
+        int timeShift = rightNow.get(Calendar.ZONE_OFFSET);
+        return Date.UTC(year - 1900, month, day, hour - (timeShift / 3600000), 0, 0);
+    }
 
     @Override
     public void onClick(View view) {
         if(checkInput()){
         Intent intent = new Intent(FifthQuestionActivity.this, ThanksActivity.class);
         startActivity(intent);
-        //   addNewReminder( ,R.string.ask_about_dreams);
-            //
+         addNewReminder(R.string.buy_chocolate, 2017, 7, 16, 13);
+
         }else return;
     }
 

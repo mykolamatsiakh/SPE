@@ -13,7 +13,6 @@ import android.widget.Toast;
  */
 
 public class ThirdQuestionActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mNextButton;
     private EditText WillingLevel;
 
     @Override
@@ -33,7 +32,6 @@ public class ThirdQuestionActivity extends AppCompatActivity implements View.OnC
         else showToast("Введіть число від 1 до 100");
     }
 
-
     private boolean checkInput() {
         String willingLevel = WillingLevel.getText().toString().trim();
         if (willingLevel.length() != 0) {
@@ -47,6 +45,5 @@ public class ThirdQuestionActivity extends AppCompatActivity implements View.OnC
     private void showToast(String message) {
         Toast.makeText(ThirdQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
-
 
 }
