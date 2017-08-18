@@ -62,9 +62,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, cv);
 
     }
-
-
-
+    
     public static long pickDate(int day, int hour)
     {
         Calendar rightNow = Calendar.getInstance();
