@@ -13,8 +13,8 @@ import android.widget.Toast;
  */
 
 public class FourthQuestionActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button mNextButton;
     private EditText mEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
