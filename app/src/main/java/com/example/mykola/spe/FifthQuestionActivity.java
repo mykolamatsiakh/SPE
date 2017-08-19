@@ -62,7 +62,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, cv);
 
     }
-    
+
     public static long pickDate(int day, int hour)
     {
         Calendar rightNow = Calendar.getInstance();
@@ -78,11 +78,15 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         if(checkInput()){
              if(mMonthBudget <= 10) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 16, 13);
+                 addNewReminder(R.string.wash_dishes, 1, 20);
+                 addNewReminder(R.string.ask_about_passed_day, 3, 22);
+                 addNewReminder(R.string.get_from_the_job, 5, 18);
              }
              else if(mMonthBudget > 10 && mMonthBudget <= 50){
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 14, 13);
+                 addNewReminder(R.string.clean_window, 1, 19);
+                 addNewReminder(R.string.ask_about_passed_day, 3, 21);
+                 addNewReminder(R.string.thanks_for_her, 5, 22);
              }
              else if(mMonthBudget > 50 && mMonthBudget <= 100){
                  startNextActivity();
@@ -92,31 +96,45 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
              }
              else if (mMonthBudget > 100 && mMonthBudget <= 200) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 16, 13);
+                 addNewReminder(R.string.buy_trinket, 1, 18);
+                 addNewReminder(R.string.clean_up_room, 3, 9);
+                 addNewReminder(R.string.make_compliment_about_appearence, 5, 22);
              }
              else if (mMonthBudget > 200 && mMonthBudget <= 400) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 16, 13);
+                 addNewReminder(R.string.go_to_restourant, 1, 20);
+                 addNewReminder(R.string.buy_and_give_decoration, 3, 9);
+                 addNewReminder(R.string.make_compliment_about_nice_solution, 5, 18);
              }
              else if(mMonthBudget > 400 && mMonthBudget <= 600) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 16, 13);
+                 addNewReminder(R.string.buy_ticket_for_the_concert, 1, 9);
+                 addNewReminder(R.string.clean_washbasin, 3, 20);
+                 addNewReminder(R.string.make_compliment_about_taste, 5, 22);
              }
              else if(mMonthBudget > 600 && mMonthBudget <= 1000) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 16, 13);
+                 addNewReminder(R.string.buy_procedure_in_beauty_salon, 1, 9);
+                 addNewReminder(R.string.invite_to_theatre, 3, 14);
+                 addNewReminder(R.string.thank_for_passed_dinner, 5, 22);
              }
              else if(mMonthBudget > 1000 && mMonthBudget <= 2000) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate, 16, 13);
+                 addNewReminder(R.string.buy_subscription, 1, 20);
+                 addNewReminder(R.string.go_shopping, 3, 18);
+                 addNewReminder(R.string.make_compliment_about_nice_solution, 5, 18);
              }
              else if(mMonthBudget > 2000 && mMonthBudget <= 4000) {
                  startNextActivity();
-                 addNewReminder(R.string.buy_chocolate , 16, 13);
+                 addNewReminder(R.string.give_a_trip, 1, 10);
+                 addNewReminder(R.string.clean_toilet, 3, 19);
+                 addNewReminder(R.string.ask_about_help_needed, 5, 20);
              }
-             else if (mMonthBudget >= 4000) {
+             else if (mMonthBudget > 4000) {
                 startNextActivity();
-                addNewReminder(R.string.buy_chocolate, 16, 13);
+                addNewReminder(R.string.buy_chocolate, 1, 13);
+                 addNewReminder(R.string.clean_mirror, 3, 20);
+                 addNewReminder(R.string.sorry_about_inattention, 5, 22);
             }
 
 

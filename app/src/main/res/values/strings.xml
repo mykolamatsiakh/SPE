@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SPE</string>
     <string name="ok">Ок</string>
-    <string name="sign_up">Sign In with Google</string>
+    <string name="sign_up"> Увійти з Google</string>
     <string name="first_question">Яка пропорція (%) вдалих і невдалих днів у Ваших взаєминах?</string>
     <string name="succesfull">Вдалі</string>
     <string name="unsuccessful">Невдалі</string>
@@ -11,7 +11,7 @@
     <string name="btn_logout_from_google">Logout from Google</string>
     <string name="btn_revoke_access">Revoke Access</string>
     <string name="loading">Loading...</string>
-    <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="signed_in_fmt">Увійти як: %s</string>
     <string name="title_text">Google Sign-In\nQuickstart</string>
 
     <!-- Sign-in status messages -->
@@ -74,7 +74,7 @@
     <string name="buy_and_give_decoration">Купити і подарувати прикрасу</string>
     <string name="buy_book_or_journal">Купити книгу чи журнал, яку/ий вона хоче/читає</string>
     <string name="go_to_restourant">Повести в ресторан</string>
-    <string name="buy_ticket_for_the_restaurant">Купити квитки і запросити на концерт</string>
+    <string name="buy_ticket_for_the_concert">Купити квитки і запросити на концерт</string>
     <string name="buy_trinket">Купити маленьку приємну дрібничку (блокнот, веселу ручку, мяку іграшку тощо)</string>
     <string name="invite_to_cinema">Запросити в кіно</string>
     <string name="buy_gift">Купити подарунок (гаманець, скриньку тощо)</string>
