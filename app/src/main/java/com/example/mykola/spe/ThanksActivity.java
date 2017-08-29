@@ -16,8 +16,7 @@ public class ThanksActivity extends AppCompatActivity{
         findViewById(R.id.finish_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.exit(0);
-
+                System.exit(1);
             }
         });
 
