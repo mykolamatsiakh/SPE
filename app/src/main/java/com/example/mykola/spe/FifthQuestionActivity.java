@@ -1,7 +1,6 @@
 package com.example.mykola.spe;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-
-import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
@@ -39,41 +36,34 @@ import java.util.TimeZone;
 //bla bla
 
 public class FifthQuestionActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText mEditText;
+
+    EditText mEditText;
     GoogleAccountCredential mCredentials;
     private static final String[] SCOPES = {CalendarScopes.CALENDAR};
+    final List<Event> mEvents = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
         mEditText = (EditText) findViewById(R.id.monthBudget);
-
         mCredentials = GoogleAccountCredential.usingOAuth2(
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff())
-                .setSelectedAccount(getAccount());
+                .setSelectedAccountName(AppAccount.getInstance(FifthQuestionActivity.this).getName());
     }
-
-    private Account getAccount() {
-
-            AccountManager am = AccountManager.get(this);
-            Account[] accounts = am.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
-        return accounts[0];
-        }
 
     @Override
     public void onClick(View view) {
         String MoneyPerMonth = mEditText.getText().toString().trim();
         int mMonthBudget = Integer.valueOf(MoneyPerMonth);
         if (checkInput()) {
-            List<Event> events = new ArrayList<>(3);
+            mEvents.clear();
 //            if (mMonthBudget <= 10) {
-            events.add(createEvent(R.string.wash_dishes, 1, 20));
-//            events.add(createEvent(R.string.ask_about_passed_day, 3, 22));
-//            events.add(createEvent(R.string.get_from_the_job, 5, 18));
+            mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
+            mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
+            mEvents.add(createEvent(R.string.get_from_the_job, 5, 18));
 //            } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
 //                createEvent(R.string.clean_window, 1, 19);
 //                createEvent(R.string.ask_about_passed_day, 3, 21);
@@ -111,8 +101,13 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
 //                createEvent(R.string.clean_mirror, 3, 20);
 //                createEvent(R.string.sorry_about_inattention, 5, 22);
 //            }
-            new SaveDateTask(events, mCredentials).execute();
+            saveEvents(mEvents);
         }
+    }
+
+    private boolean checkInput() {
+        String MonthBudget = mEditText.getText().toString().trim();
+        return MonthBudget.length() != 0;
     }
 
     Event createEvent(@StringRes int description, int day, int hour) {
@@ -135,18 +130,25 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                 rightNow.get(Calendar.DAY_OF_MONTH) + day, hour - (timeShift / 3600000) - 1, 0, 0);
     }
 
-    private boolean checkInput() {
-        String MonthBudget = mEditText.getText().toString().trim();
-        return MonthBudget.length() != 0;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Activity.RESULT_OK) {
+            saveEvents(mEvents);
+        }
     }
 
-    class SaveDateTask extends AsyncTask<Void, Void, List<Event>> {
+    private void saveEvents(List<Event> events) {
+        new SaveEventTask(events, mCredentials).execute();
+    }
+
+    class SaveEventTask extends AsyncTask<Void, Void, List<Event>> {
 
         private final List<Event> mEvents;
         private final com.google.api.services.calendar.Calendar mService;
-        private Exception mLastError = null;
-        SaveDateTask(List<Event> events,
-                     GoogleAccountCredential credential) {
+
+        SaveEventTask(List<Event> events,
+                      GoogleAccountCredential credential) {
             mEvents = events;
             HttpTransport transport = AndroidHttp.newCompatibleTransport();
             JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
@@ -164,7 +166,6 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                     Event createdEvent = mService.events().insert("primary", event).execute();
                     events.add(createdEvent);
                 }
-
             } catch (UserRecoverableAuthIOException e) {
                 startActivityForResult(e.getIntent(), 100);
             } catch (IOException e) {
@@ -178,12 +179,6 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
             Log.d("tag", events.toString());
             startNextActivity();
         }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d("log", data.toString());
     }
 
     public void startNextActivity() {
