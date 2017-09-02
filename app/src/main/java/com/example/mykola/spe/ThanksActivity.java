@@ -1,6 +1,8 @@
 package com.example.mykola.spe;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -14,9 +16,10 @@ public class ThanksActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanks);
         findViewById(R.id.finish_button).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                System.exit(1);
+                finishAndRemoveTask();
             }
         });
 

@@ -22,7 +22,7 @@
         android:inputType="number"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:hint=" Днів на місяць"/>
+        android:hint="          Днів"/>
 
     <Button
         android:id="@+id/next_button4"

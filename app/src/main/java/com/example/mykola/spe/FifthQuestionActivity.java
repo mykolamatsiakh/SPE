@@ -60,47 +60,47 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         int mMonthBudget = Integer.valueOf(MoneyPerMonth);
         if (checkInput()) {
             mEvents.clear();
-//            if (mMonthBudget <= 10) {
+          if (mMonthBudget <= 10) {
             mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
             mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
             mEvents.add(createEvent(R.string.get_from_the_job, 5, 18));
-//            } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
-//                createEvent(R.string.clean_window, 1, 19);
-//                createEvent(R.string.ask_about_passed_day, 3, 21);
-//                createEvent(R.string.thanks_for_her, 5, 22);
-//            } else if (mMonthBudget > 50 && mMonthBudget <= 100) {
-//                createEvent(R.string.buy_book_or_journal, 1, 18);
-//                createEvent(R.string.ask_about_dreams, 3, 22);
-//                createEvent(R.string.clean_up_room, 5, 9);
-//            } else if (mMonthBudget > 100 && mMonthBudget <= 200) {
-//                createEvent(R.string.buy_trinket, 1, 18);
-//                createEvent(R.string.clean_up_room, 3, 9);
-//                createEvent(R.string.make_compliment_about_appearence, 5, 22);
-//            } else if (mMonthBudget > 200 && mMonthBudget <= 400) {
-//                createEvent(R.string.go_to_restourant, 1, 20);
-//                createEvent(R.string.buy_and_give_decoration, 3, 9);
-//                createEvent(R.string.make_compliment_about_nice_solution, 5, 18);
-//            } else if (mMonthBudget > 400 && mMonthBudget <= 600) {
-//                createEvent(R.string.buy_ticket_for_the_concert, 1, 9);
-//                createEvent(R.string.clean_washbasin, 3, 20);
-//                createEvent(R.string.make_compliment_about_taste, 5, 22);
-//            } else if (mMonthBudget > 600 && mMonthBudget <= 1000) {
-//                createEvent(R.string.buy_procedure_in_beauty_salon, 1, 9);
-//                createEvent(R.string.invite_to_theatre, 3, 14);
-//                createEvent(R.string.thank_for_passed_dinner, 5, 22);
-//            } else if (mMonthBudget > 1000 && mMonthBudget <= 2000) {
-//                createEvent(R.string.buy_subscription, 1, 20);
-//                createEvent(R.string.go_shopping, 3, 18);
-//                createEvent(R.string.make_compliment_about_nice_solution, 5, 18);
-//            } else if (mMonthBudget > 2000 && mMonthBudget <= 4000) {
-//                createEvent(R.string.give_a_trip, 1, 10);
-//                createEvent(R.string.clean_toilet, 3, 19);
-//                createEvent(R.string.ask_about_help_needed, 5, 20);
-//            } else {
-//                createEvent(R.string.buy_chocolate, 1, 13);
-//                createEvent(R.string.clean_mirror, 3, 20);
-//                createEvent(R.string.sorry_about_inattention, 5, 22);
-//            }
+            } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
+            mEvents.add(createEvent(R.string.clean_window, 1, 19));
+            mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 21));
+            mEvents.add(createEvent(R.string.thanks_for_her, 5, 22));
+            } else if (mMonthBudget > 50 && mMonthBudget <= 100) {
+            mEvents.add(createEvent(R.string.buy_book_or_journal, 1, 18));
+            mEvents.add(createEvent(R.string.ask_about_dreams, 3, 22));
+            mEvents.add(createEvent(R.string.clean_up_room, 5, 9));
+            } else if (mMonthBudget > 100 && mMonthBudget <= 200) {
+            mEvents.add(createEvent(R.string.buy_trinket, 1, 18));
+            mEvents.add(createEvent(R.string.clean_up_room, 3, 9));
+            mEvents.add(createEvent(R.string.make_compliment_about_appearence, 5, 22));
+            } else if (mMonthBudget > 200 && mMonthBudget <= 400) {
+            mEvents.add(createEvent(R.string.go_to_restourant, 1, 20));
+            mEvents.add(createEvent(R.string.buy_and_give_decoration, 3, 9));
+            mEvents.add(createEvent(R.string.make_compliment_about_nice_solution, 5, 18));
+            } else if (mMonthBudget > 400 && mMonthBudget <= 600) {
+            mEvents.add(createEvent(R.string.buy_ticket_for_the_concert, 1, 9));
+            mEvents.add(createEvent(R.string.clean_washbasin, 3, 20));
+            mEvents.add(createEvent(R.string.make_compliment_about_taste, 5, 22));
+            } else if (mMonthBudget > 600 && mMonthBudget <= 1000) {
+            mEvents.add(createEvent(R.string.buy_procedure_in_beauty_salon, 1, 9));
+            mEvents.add(createEvent(R.string.invite_to_theatre, 3, 14));
+            mEvents.add(createEvent(R.string.thank_for_passed_dinner, 5, 22));
+            } else if (mMonthBudget > 1000 && mMonthBudget <= 2000) {
+            mEvents.add(createEvent(R.string.buy_subscription, 1, 20));
+            mEvents.add(createEvent(R.string.go_shopping, 3, 18));
+            mEvents.add(createEvent(R.string.make_compliment_about_nice_solution, 5, 18));
+            } else if (mMonthBudget > 2000 && mMonthBudget <= 4000) {
+            mEvents.add(createEvent(R.string.give_a_trip, 1, 10));
+            mEvents.add(createEvent(R.string.clean_toilet, 3, 19));
+            mEvents.add(createEvent(R.string.ask_about_help_needed, 5, 20));
+            } else {
+            mEvents.add(createEvent(R.string.buy_chocolate, 1, 13));
+            mEvents.add(createEvent(R.string.clean_mirror, 3, 20));
+            mEvents.add(createEvent(R.string.sorry_about_inattention, 5, 22));
+            }
             saveEvents(mEvents);
         }
     }
