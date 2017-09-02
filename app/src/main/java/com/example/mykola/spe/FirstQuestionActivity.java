@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.common.api.GoogleApiClient;
 
 
 /**
@@ -19,7 +20,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 
 public class FirstQuestionActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 0;
+
+    private static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.WRITE_CALENDAR, Manifest.permission.GET_ACCOUNTS};
+
+    private static final int RC_PERMISSIONS = 0;
     EditText SuccesfullDays;
     EditText UnsuccesfulDays;
 
@@ -30,33 +35,37 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
         SuccesfullDays = (EditText)findViewById(R.id.first_question_succesfull);
         UnsuccesfulDays = (EditText)findViewById(R.id.first_question_unsuccesfull);
         findViewById(R.id.first_next_button).setOnClickListener(this);
+    }
 
-        // Here, thisActivity is the current activity
-        requestPermission();
-        if (!hasPermissions()) {
-            return;
+    @Override
+    protected void onStart() {
+        super.onStart();
+if (lacksPermissions()) {
+    requestPermission();
+}
+    }
+
+    private boolean lacksPermissions() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
+        for (String permission : PERMISSIONS) {
+            if (lacksPermission(permission)) return true;
         }
+        return false;
+    }
+
+    private boolean lacksPermission(String permission) {
+        return ContextCompat.checkSelfPermission(FirstQuestionActivity.this, permission)
+                != PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
-        String[] permissions = new String[]{
-                Manifest.permission.WRITE_CALENDAR};
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(permissions, MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
-        }
-    }
-    private boolean hasPermissions() {
-        int res;
-        String permission = Manifest.permission.WRITE_CALENDAR;
-        res = checkCallingOrSelfPermission(permission);
-        if (PackageManager.PERMISSION_GRANTED == res) {
-            return true;
-        } else
-            return false;
+        ActivityCompat.requestPermissions(FirstQuestionActivity.this, PERMISSIONS, RC_PERMISSIONS);
     }
 
-    private void showToast(String message) {
-        Toast.makeText(FirstQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        // ignored
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
@@ -76,6 +85,10 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
         else
             showToast("Ви не заповнили всі поля або пропорція неправильна");
 
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(FirstQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }
 
