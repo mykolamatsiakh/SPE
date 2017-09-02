@@ -1,13 +1,7 @@
 package com.example.mykola.spe;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -17,14 +11,17 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.DateTime;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 
 /**
@@ -33,10 +30,8 @@ import java.util.Date;
 
 public class FifthQuestionActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText mEditText;
-    GoogleAccountCredential credentials;
-    private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
-
-
+    GoogleAccountCredential mCredentials;
+    private static final String[] SCOPES = { CalendarScopes.CALENDAR };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +51,6 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         cv.put(CalendarContract.Events.HAS_ALARM, true);
         cv.put(CalendarContract.Events.DTSTART, pickDate(day,hour));
         cv.put(CalendarContract.Events.DTEND, pickDate(day,hour+1));*/
-        Event event = new Event()
-                .setSummary("SPE")
-                .setDescription(getString(description));
-
        /* if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -71,14 +62,33 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
             return;
         }
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, cv);*/
-        EventDateTime start = new EventDateTime()
-        .set(CalendarContract.Events.DTSTART, pickDate(day, hour));
-        event.setStart(start);
-        EventDateTime end = new EventDateTime()
-         .set(CalendarContract.Events.DTEND, pickDate(day,hour+1));
-        event.setEnd(end);
+        mCredentials = GoogleAccountCredential.usingOAuth2(
+                getApplicationContext(), Arrays.asList(SCOPES))
+                .setBackOff(new ExponentialBackOff())
+                .setSelectedAccountName("mmatsiakh@gmail.com");
 
+        JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
+        HttpTransport httpTransport = AndroidHttp.newCompatibleTransport();
+        Event event = new Event()
+                .setSummary("SPE")
+                .setDescription(String.valueOf(description));
+        com.google.api.services.calendar.Calendar service
+                = new com.google.api.services.calendar.Calendar.Builder(httpTransport, jsonFactory, mCredentials)
+                .setApplicationName("SPE")
+                .build();
+        Date startDate = new Date(pickDate(day, hour));
+        Date endDate = new Date(pickDate(day, hour+1));
+        DateTime start = new DateTime(startDate, TimeZone.getTimeZone("Europe/Kiev"));
+        event.setStart(new EventDateTime().setDateTime(start));
+        DateTime end = new DateTime(endDate, TimeZone.getTimeZone("Europe/Kiev"));
+        event.setEnd(new EventDateTime().setDateTime(end));
 
+        String calendarId = "primary";
+        try {
+            Event createdEvent = service.events().insert(calendarId, event).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static long pickDate(int day, int hour)
@@ -154,16 +164,12 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                  addNewEvent(R.string.clean_mirror, 3, 20);
                  addNewEvent(R.string.sorry_about_inattention, 5, 22);
             }
-
-
-        }else return;
+        }
     }
 
     private boolean checkInput() {
         String MonthBudget = mEditText.getText().toString().trim();
-        if (MonthBudget.length() != 0) {
-            return true;
-        } else return false;
+        return MonthBudget.length() != 0;
     }
 
     public void startNextActivity() {

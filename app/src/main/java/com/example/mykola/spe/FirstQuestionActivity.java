@@ -77,7 +77,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
             showToast("Ви не заповнили всі поля або пропорція неправильна");
 
     }
-
 }
 
 
