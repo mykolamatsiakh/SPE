@@ -29,21 +29,23 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
             Intent intent = new Intent(FourthQuestionActivity.this, FifthQuestionActivity.class);
             startActivity(intent);
         }
-        else showToast("Оберіть к-сть днів від 1 до 31");
+        else {
+        }
     }
 
     private boolean checkInput() {
         String DaysPerMonth = mEditText.getText().toString().trim();
-        if (DaysPerMonth.length() != 0) {
-            int daysNumber = Integer.valueOf(DaysPerMonth);
-            if (daysNumber <= 31 && daysNumber >= 1) {
-                return true;
-            } else return false;
-        } else return false;
+        return DaysPerMonth.length() != 0;
     }
 
     private void showToast(String message) {
         Toast.makeText(FourthQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        // Your Code Here. Leave empty if you want nothing to happen on back press.
     }
 
 }

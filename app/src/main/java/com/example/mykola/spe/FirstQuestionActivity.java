@@ -90,6 +90,12 @@ if (lacksPermissions()) {
     private void showToast(String message) {
         Toast.makeText(FirstQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        // Your Code Here. Leave empty if you want nothing to happen on back press.
+    }
 }
 
 

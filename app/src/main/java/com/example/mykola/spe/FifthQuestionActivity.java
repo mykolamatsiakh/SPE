@@ -183,7 +183,14 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
 
     public void startNextActivity() {
         Intent intent = new Intent(FifthQuestionActivity.this, ThanksActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        // Your Code Here. Leave empty if you want nothing to happen on back press.
     }
 }
 

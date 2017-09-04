@@ -25,22 +25,28 @@
         <activity android:name=".FirstQuestionActivity"
                   android:configChanges="orientation"
                   android:screenOrientation="portrait"
+                  android:noHistory="true"
             />
         <activity android:name=".SecondQuestionActivity"
                   android:configChanges="orientation"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait"
+                  android:noHistory="true"/>
         <activity android:name=".ThirdQuestionActivity"
                   android:configChanges="orientation"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait"
+                  android:noHistory="true"/>
         <activity android:name=".FourthQuestionActivity"
                   android:configChanges="orientation"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait"
+                  android:noHistory="true"/>
         <activity android:name=".FifthQuestionActivity"
                   android:configChanges="orientation"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait"
+                  android:noHistory="true"/>
         <activity android:name=".ThanksActivity"
                   android:configChanges="orientation"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait"
+                  android:noHistory="true"/>
 
     </application>
 

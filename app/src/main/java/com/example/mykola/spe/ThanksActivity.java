@@ -24,4 +24,10 @@ public class ThanksActivity extends AppCompatActivity{
         });
 
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        // Your Code Here. Leave empty if you want nothing to happen on back press.
+    }
 }

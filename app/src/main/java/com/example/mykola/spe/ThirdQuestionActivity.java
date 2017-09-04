@@ -45,4 +45,10 @@ public class ThirdQuestionActivity extends AppCompatActivity implements View.OnC
         Toast.makeText(ThirdQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        // Your Code Here. Leave empty if you want nothing to happen on back press.
+    }
+
 }

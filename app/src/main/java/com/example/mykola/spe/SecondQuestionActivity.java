@@ -47,4 +47,10 @@ public class SecondQuestionActivity extends AppCompatActivity implements View.On
         Toast.makeText(SecondQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        // Your Code Here. Leave empty if you want nothing to happen on back press.
+    }
+
 }
