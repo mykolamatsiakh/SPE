@@ -1,6 +1,7 @@
 package com.example.mykola.spe;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.ViewSwitcher;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
@@ -29,6 +33,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+import static android.view.View.VISIBLE;
+
 
 /**
  * Created by mykola on 04.07.17.
@@ -39,6 +45,8 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
 
     EditText mEditText;
     GoogleAccountCredential mCredentials;
+    ProgressBar mProgressbar;
+    ProgressDialog nDialog;
     private static final String[] SCOPES = {CalendarScopes.CALENDAR};
     final List<Event> mEvents = new ArrayList<>();
 
@@ -48,11 +56,13 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
         mEditText = (EditText) findViewById(R.id.monthBudget);
-        mCredentials = GoogleAccountCredential.usingOAuth2(
+        mProgressbar = (ProgressBar) findViewById(R.id.progress_loader);
+                mCredentials = GoogleAccountCredential.usingOAuth2(
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff())
                 .setSelectedAccountName(AppAccount.getInstance(FifthQuestionActivity.this).getName());
     }
+
 
     @Override
     public void onClick(View view) {
@@ -60,7 +70,8 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         int mMonthBudget = Integer.valueOf(MoneyPerMonth);
         if (checkInput()) {
             mEvents.clear();
-          if (mMonthBudget <= 10) {
+            mProgressbar.setVisibility(View.VISIBLE);
+            if (mMonthBudget <= 10) {
             mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
             mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
             mEvents.add(createEvent(R.string.get_from_the_job, 5, 18));
@@ -115,7 +126,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         Date endDate = new Date(pickDate(day, hour + 1));
         DateTime start = new DateTime(startDate, TimeZone.getTimeZone("Europe/Kiev"));
         Event event = new Event()
-                .setSummary("SPE")
+                .setSummary("Be a hero:"+getString(description))
                 .setDescription(getString(description));
         event.setStart(new EventDateTime().setDateTime(start));
         DateTime end = new DateTime(endDate, TimeZone.getTimeZone("Europe/Kiev"));
@@ -178,6 +189,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         protected void onPostExecute(List<Event> events) {
             Log.d("tag", events.toString());
             startNextActivity();
+
         }
     }
 
@@ -192,5 +204,6 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
     {
         // Your Code Here. Leave empty if you want nothing to happen on back press.
     }
+
 }
 
