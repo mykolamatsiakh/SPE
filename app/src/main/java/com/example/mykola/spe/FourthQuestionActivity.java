@@ -21,12 +21,16 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.fourth_question);
         findViewById(R.id.next_button4).setOnClickListener(this);
         mEditText = (EditText) findViewById(R.id.daysPerMonth);
+
     }
 
     @Override
     public void onClick(View view) {
         if(checkInput()) {
+            String DaysPerMonth = mEditText.getText().toString().trim();
+            int mDays = Integer.valueOf(DaysPerMonth);
             Intent intent = new Intent(FourthQuestionActivity.this, FifthQuestionActivity.class);
+            intent.putExtra("Days", mDays );
             startActivity(intent);
         }
         else {

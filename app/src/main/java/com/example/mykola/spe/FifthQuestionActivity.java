@@ -68,13 +68,16 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         String MoneyPerMonth = mEditText.getText().toString().trim();
         int mMonthBudget = Integer.valueOf(MoneyPerMonth);
+        Intent mIntent = getIntent();
+        int mDays = mIntent.getIntExtra("Days", 0);
         if (checkInput()) {
             mEvents.clear();
             mProgressbar.setVisibility(View.VISIBLE);
             if (mMonthBudget <= 10) {
-            mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
-            mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
-            mEvents.add(createEvent(R.string.get_from_the_job, 5, 18));
+                for(int i = 1; i < mDays; i++)
+           // mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
+            //mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
+            mEvents.add(createEvent(R.string.get_from_the_job, i, 18));
             } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
             mEvents.add(createEvent(R.string.clean_window, 1, 19));
             mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 21));
