@@ -2,6 +2,7 @@ package com.example.mykola.spe;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+import static android.R.attr.description;
 import static android.view.View.VISIBLE;
 
 
@@ -42,16 +44,18 @@ import static android.view.View.VISIBLE;
 //bla bla
 
 public class FifthQuestionActivity extends AppCompatActivity implements View.OnClickListener {
-
     EditText mEditText;
     GoogleAccountCredential mCredentials;
     ProgressBar mProgressbar;
     ProgressDialog nDialog;
     private static final String[] SCOPES = {CalendarScopes.CALENDAR};
     final List<Event> mEvents = new ArrayList<>();
+    List<String> description = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String[] array = getResources().getStringArray(R.array.events_string);
+        description = Arrays.asList(array);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
@@ -74,63 +78,66 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
             mEvents.clear();
             mProgressbar.setVisibility(View.VISIBLE);
             if (mMonthBudget <= 10) {
-                for(int i = 1; i < mDays; i++)
-           // mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
-            //mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
-            mEvents.add(createEvent(R.string.get_from_the_job, i, 18));
+                for(int i = 1; i < mDays; i++) {
+                    // mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
+                    //mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
+                    mEvents.add(createEvent(description.get(i), i, 18));
+                }
             } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
-            mEvents.add(createEvent(R.string.clean_window, 1, 19));
-            mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 21));
-            mEvents.add(createEvent(R.string.thanks_for_her, 5, 22));
-            } else if (mMonthBudget > 50 && mMonthBudget <= 100) {
-            mEvents.add(createEvent(R.string.buy_book_or_journal, 1, 18));
-            mEvents.add(createEvent(R.string.ask_about_dreams, 3, 22));
-            mEvents.add(createEvent(R.string.clean_up_room, 5, 9));
+                for(int i = 1; i < mDays; i++) {
+                    mEvents.add(createEvent(description.get(i), i, 18));
+                }
+
+            } else if(mMonthBudget > 50 && mMonthBudget <= 100) {
+                for(int i = 1; i < mDays; i++) {
+                    mEvents.add(createEvent(description.get(i), i, 18));
+                }
+            }
             } else if (mMonthBudget > 100 && mMonthBudget <= 200) {
-            mEvents.add(createEvent(R.string.buy_trinket, 1, 18));
-            mEvents.add(createEvent(R.string.clean_up_room, 3, 9));
-            mEvents.add(createEvent(R.string.make_compliment_about_appearence, 5, 22));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             } else if (mMonthBudget > 200 && mMonthBudget <= 400) {
-            mEvents.add(createEvent(R.string.go_to_restourant, 1, 20));
-            mEvents.add(createEvent(R.string.buy_and_give_decoration, 3, 9));
-            mEvents.add(createEvent(R.string.make_compliment_about_nice_solution, 5, 18));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             } else if (mMonthBudget > 400 && mMonthBudget <= 600) {
-            mEvents.add(createEvent(R.string.buy_ticket_for_the_concert, 1, 9));
-            mEvents.add(createEvent(R.string.clean_washbasin, 3, 20));
-            mEvents.add(createEvent(R.string.make_compliment_about_taste, 5, 22));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             } else if (mMonthBudget > 600 && mMonthBudget <= 1000) {
-            mEvents.add(createEvent(R.string.buy_procedure_in_beauty_salon, 1, 9));
-            mEvents.add(createEvent(R.string.invite_to_theatre, 3, 14));
-            mEvents.add(createEvent(R.string.thank_for_passed_dinner, 5, 22));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             } else if (mMonthBudget > 1000 && mMonthBudget <= 2000) {
-            mEvents.add(createEvent(R.string.buy_subscription, 1, 20));
-            mEvents.add(createEvent(R.string.go_shopping, 3, 18));
-            mEvents.add(createEvent(R.string.make_compliment_about_nice_solution, 5, 18));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             } else if (mMonthBudget > 2000 && mMonthBudget <= 4000) {
-            mEvents.add(createEvent(R.string.give_a_trip, 1, 10));
-            mEvents.add(createEvent(R.string.clean_toilet, 3, 19));
-            mEvents.add(createEvent(R.string.ask_about_help_needed, 5, 20));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             } else {
-            mEvents.add(createEvent(R.string.buy_chocolate, 1, 13));
-            mEvents.add(createEvent(R.string.clean_mirror, 3, 20));
-            mEvents.add(createEvent(R.string.sorry_about_inattention, 5, 22));
+            for(int i = 1; i < mDays; i++) {
+                mEvents.add(createEvent(description.get(i), i, 18));
+            }
             }
             saveEvents(mEvents);
         }
-    }
+
 
     private boolean checkInput() {
         String MonthBudget = mEditText.getText().toString().trim();
         return MonthBudget.length() != 0;
     }
 
-    Event createEvent(@StringRes int description, int day, int hour) {
+    Event createEvent( String description, int day, int hour) {
         Date startDate = new Date(pickDate(day, hour));
         Date endDate = new Date(pickDate(day, hour + 1));
         DateTime start = new DateTime(startDate, TimeZone.getTimeZone("Europe/Kiev"));
         Event event = new Event()
-                .setSummary("Be a hero:"+getString(description))
-                .setDescription(getString(description));
+                .setSummary("Be a hero:"+description)
+                .setDescription(description);
         event.setStart(new EventDateTime().setDateTime(start));
         DateTime end = new DateTime(endDate, TimeZone.getTimeZone("Europe/Kiev"));
         event.setEnd(new EventDateTime().setDateTime(end));
