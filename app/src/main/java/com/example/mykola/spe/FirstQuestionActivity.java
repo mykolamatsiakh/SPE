@@ -1,17 +1,28 @@
 package com.example.mykola.spe;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static com.example.mykola.spe.R.styleable.CompoundButton;
 
 
 /**
@@ -19,7 +30,7 @@ import android.widget.Toast;
  */
 
 
-public class FirstQuestionActivity extends AppCompatActivity implements View.OnClickListener{
+public class FirstQuestionActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String[] PERMISSIONS = new String[]{
             Manifest.permission.WRITE_CALENDAR, Manifest.permission.GET_ACCOUNTS};
@@ -27,14 +38,24 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
     private static final int RC_PERMISSIONS = 0;
     EditText SuccesfullDays;
     EditText UnsuccesfulDays;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_question);
-        SuccesfullDays = (EditText)findViewById(R.id.first_question_succesfull);
-        UnsuccesfulDays = (EditText)findViewById(R.id.first_question_unsuccesfull);
+        SuccesfullDays = (EditText) findViewById(R.id.first_question_succesfull);
+        UnsuccesfulDays = (EditText) findViewById(R.id.first_question_unsuccesfull);
         findViewById(R.id.first_next_button).setOnClickListener(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -43,7 +64,53 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
 if (lacksPermissions()) {
     requestPermission();
 }
+//showDialog();
     }
+//    private void showDialog() {
+//        final View checkBoxView = View.inflate(this, R.layout.checkbox, null);
+//        final CheckBox checkBox = (CheckBox) checkBoxView.findViewById(R.id.checkbox);
+//        checkBox.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                // Save to shared preferences
+//                if(isChecked){
+//                    checkBoxView.setEnabled(true);
+//                }
+//            }
+//        });
+//        checkBox.setText("Я погоджуюся з правилами");
+//        final AlertDialog dialog = new Builder(mContext)
+//                .setTitle("Private policy")
+//                .setMessage("Дана програма це більше гра, ніж додаток, який бере відповідальність за Ваші стосунки")
+//                .setView(checkBoxView)
+//                .setCancelable(false)
+//                .setPositiveButton("Yes", null)
+//                .create();
+//
+//
+//        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+//
+//            @Override
+//            public void onShow(final DialogInterface dialog) {
+//
+//                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+//                button.setOnClickListener(new View.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View view) {
+//                        // TODO Do something
+//                        if(checkBoxView.isEnabled()){
+//                            dialog.cancel();
+//                        }
+//                        //Dismiss once everything is OK.
+//                        dialog.dismiss();
+//                    }
+//                });
+//            }
+//        });
+//        dialog.show();
+//    }
+
 
     private boolean lacksPermissions() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;

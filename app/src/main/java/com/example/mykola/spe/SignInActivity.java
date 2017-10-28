@@ -156,6 +156,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     public void onBackPressed()
     {
         // Your Code Here. Leave empty if you want nothing to happen on back press.
+        super.onBackPressed();
     }
 
 }

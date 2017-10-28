@@ -67,7 +67,7 @@
     <string name="server_client_id">YOUR_SERVER_CLIENT_ID</string>
     <string name="fifth_question">Який місячний бюджет Ви готові виділити?</string>
     <string name="next_button">Далі</string>
-    <string name="thanks_string">Дякуємо за відповіді. Незабаром ми надішлемо завдання, які покращать Ваші відносини.\n З повагою, SPE.</string>
+    <string name="thanks_string"> Дякуємо! Зайдіть у свій Ґуґл-Календар і у верхньому лівому рядку натисніть "Оновити".\n</string>
     
     //User tasks
     <string name="buy_subscription">Купити і подарувати абонемент у салон краси</string>

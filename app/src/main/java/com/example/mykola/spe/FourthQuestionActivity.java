@@ -3,6 +3,7 @@ package com.example.mykola.spe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,15 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.fourth_question);
         findViewById(R.id.next_button4).setOnClickListener(this);
         mEditText = (EditText) findViewById(R.id.daysPerMonth);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
     }
 
@@ -44,12 +54,6 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
 
     private void showToast(String message) {
         Toast.makeText(FourthQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onBackPressed()
-    {
-        // Your Code Here. Leave empty if you want nothing to happen on back press.
     }
 
 }

@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +33,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.TimeZone;
 
 import static android.R.attr.description;
@@ -47,15 +49,17 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
     EditText mEditText;
     GoogleAccountCredential mCredentials;
     ProgressBar mProgressbar;
-    ProgressDialog nDialog;
     private static final String[] SCOPES = {CalendarScopes.CALENDAR};
     final List<Event> mEvents = new ArrayList<>();
     List<String> description = new ArrayList<>();
+    List<String> second_description = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String[] array = getResources().getStringArray(R.array.events_string);
+        String[] second_array = getResources().getStringArray(R.array.events_string_2);
         description = Arrays.asList(array);
+        second_description = Arrays.asList(second_array);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
@@ -65,6 +69,15 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff())
                 .setSelectedAccountName(AppAccount.getInstance(FifthQuestionActivity.this).getName());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 
@@ -76,53 +89,110 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         int mDays = mIntent.getIntExtra("Days", 0);
         if (checkInput()) {
             mEvents.clear();
+            int min = 9;
+            int max = 22;
             mProgressbar.setVisibility(View.VISIBLE);
             if (mMonthBudget <= 10) {
-                for(int i = 1; i < mDays; i++) {
-                    // mEvents.add(createEvent(R.string.wash_dishes, 1, 20));
-                    //mEvents.add(createEvent(R.string.ask_about_passed_day, 3, 22));
-                    mEvents.add(createEvent(description.get(i), i, 18));
+                for (int i = 1; i <= mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
                 }
             } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
-                for(int i = 1; i < mDays; i++) {
-                    mEvents.add(createEvent(description.get(i), i, 18));
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
                 }
-
-            } else if(mMonthBudget > 50 && mMonthBudget <= 100) {
-                for(int i = 1; i < mDays; i++) {
-                    mEvents.add(createEvent(description.get(i), i, 18));
+            } else if (mMonthBudget > 50 && mMonthBudget <= 100) {
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
                 }
-            }
             } else if (mMonthBudget > 100 && mMonthBudget <= 200) {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             } else if (mMonthBudget > 200 && mMonthBudget <= 400) {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             } else if (mMonthBudget > 400 && mMonthBudget <= 600) {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             } else if (mMonthBudget > 600 && mMonthBudget <= 1000) {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             } else if (mMonthBudget > 1000 && mMonthBudget <= 2000) {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             } else if (mMonthBudget > 2000 && mMonthBudget <= 4000) {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             } else {
-            for(int i = 1; i < mDays; i++) {
-                mEvents.add(createEvent(description.get(i), i, 18));
-            }
+                for (int i = 1; i < mDays; i++) {
+                    Random r = new Random();
+                    Random t = new Random();
+                    int anotherHour = t.nextInt(max - min + 1) + min;
+                    int hour = r.nextInt(max - min + 1) + min;
+                    mEvents.add(createEvent(description.get(i), i, hour));
+                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                }
             }
             saveEvents(mEvents);
+            }
+        }
+
+        protected void getType(){
+
+        }
+
+        protected void onCreateEvent(){
+
         }
 
 
@@ -207,12 +277,6 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         Intent intent = new Intent(FifthQuestionActivity.this, ThanksActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-    }
-
-    @Override
-    public void onBackPressed()
-    {
-        // Your Code Here. Leave empty if you want nothing to happen on back press.
     }
 
 }
