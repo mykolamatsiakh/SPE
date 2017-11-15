@@ -779,4 +779,10 @@
     <item>Забрати з роботи</item>
     <item>Прибрати вдома</item>
     </string-array>
+    <string-array name="push_up_phrases">
+        <item>Подякуйте коханій людині</item>
+        <item>Попросіть про послугу кохану людину</item>
+        <item>Пробачте якусь кривду</item>
+        <item>Порадійте за те, що маєте</item>
+    </string-array>
 </resources>

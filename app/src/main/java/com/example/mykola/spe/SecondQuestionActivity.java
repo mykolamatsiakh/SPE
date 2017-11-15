@@ -36,6 +36,9 @@ public class SecondQuestionActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
         if(checkInput()) {
             Intent intent = new Intent(SecondQuestionActivity.this, ThirdQuestionActivity.class);
+            String LevelOfRelations = relationsLevel.getText().toString().trim();
+            int level_of_relations = Integer.valueOf(LevelOfRelations);
+            intent.putExtra("level", level_of_relations);
             startActivity(intent);
         }
         else showToast("Введіть число від 1 до 100");

@@ -43,9 +43,11 @@ public class ThirdQuestionActivity extends AppCompatActivity implements View.OnC
 
     private boolean checkInput() {
         String willingLevel = WillingLevel.getText().toString().trim();
+        Intent intent = getIntent();
+        int current_level= intent.getIntExtra("level", 0);
         if (willingLevel.length() != 0) {
             int RelationsLevel = Integer.valueOf(willingLevel);
-            if (RelationsLevel <= 100 && RelationsLevel >= 1) {
+            if (RelationsLevel <= 100 && RelationsLevel >= 1 && RelationsLevel > current_level) {
                 return true;
             } else return false;
         } else return false;

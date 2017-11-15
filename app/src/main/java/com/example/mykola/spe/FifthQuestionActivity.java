@@ -1,13 +1,20 @@
 package com.example.mykola.spe;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -100,6 +107,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                     int hour = r.nextInt(max - min + 1) + min;
                     mEvents.add(createEvent(description.get(i), i, hour));
                     mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                    scheduleNotification(makeNotification());
                 }
             } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
                 for (int i = 1; i < mDays; i++) {
@@ -109,6 +117,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                     int hour = r.nextInt(max - min + 1) + min;
                     mEvents.add(createEvent(description.get(i), i, hour));
                     mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                    scheduleNotification(makeNotification());
                 }
             } else if (mMonthBudget > 50 && mMonthBudget <= 100) {
                 for (int i = 1; i < mDays; i++) {
@@ -118,6 +127,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                     int hour = r.nextInt(max - min + 1) + min;
                     mEvents.add(createEvent(description.get(i), i, hour));
                     mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                    scheduleNotification(makeNotification());
                 }
             } else if (mMonthBudget > 100 && mMonthBudget <= 200) {
                 for (int i = 1; i < mDays; i++) {
@@ -127,6 +137,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                     int hour = r.nextInt(max - min + 1) + min;
                     mEvents.add(createEvent(description.get(i), i, hour));
                     mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                    scheduleNotification(makeNotification());
                 }
             } else if (mMonthBudget > 200 && mMonthBudget <= 400) {
                 for (int i = 1; i < mDays; i++) {
@@ -136,6 +147,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                     int hour = r.nextInt(max - min + 1) + min;
                     mEvents.add(createEvent(description.get(i), i, hour));
                     mEvents.add(createEvent(second_description.get(i), i, anotherHour));
+                    scheduleNotification(makeNotification());
                 }
             } else if (mMonthBudget > 400 && mMonthBudget <= 600) {
                 for (int i = 1; i < mDays; i++) {
@@ -187,13 +199,34 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        protected void getType(){
+    private void scheduleNotification(Notification notification) {
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        long futureInMillis = SystemClock.elapsedRealtime() + 3600000 * randomize() ;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
 
-        }
+    private int randomize() {
+        int min = 15;
+        int max = 60;
+        Random randomTime = new Random();
+        return randomTime.nextInt(max - min + 1) + min;
+    }
 
-        protected void onCreateEvent(){
+    private Notification makeNotification() {
+        NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round))
+                .setContentTitle("Чисте місто")
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setContentText("Дякуємо за те, що робите місто чистішим")
+                .setAutoCancel(true);
+        return mBuilder.build();
 
-        }
+    }
 
 
     private boolean checkInput() {

@@ -25,6 +25,7 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +50,8 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
 
     private boolean checkInput() {
         String DaysPerMonth = mEditText.getText().toString().trim();
-        return DaysPerMonth.length() != 0;
+        int Days = Integer.valueOf(DaysPerMonth);
+        return Days <= 21;
     }
 
     private void showToast(String message) {

@@ -47,15 +47,6 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
         SuccesfullDays = (EditText) findViewById(R.id.first_question_succesfull);
         UnsuccesfulDays = (EditText) findViewById(R.id.first_question_unsuccesfull);
         findViewById(R.id.first_next_button).setOnClickListener(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(null);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
 
     @Override
@@ -147,10 +138,10 @@ if (lacksPermissions()) {
                     Intent intent = new Intent(FirstQuestionActivity.this, SecondQuestionActivity.class);
                     startActivity(intent);
                 }
-                else showToast("Ви не заповнили всі поля або пропорція неправильна");
+                else showToast("Сума повинна бути 100%!");
         }
         else
-            showToast("Ви не заповнили всі поля або пропорція неправильна");
+            showToast("Сума повинна бути 100%!");
 
     }
 

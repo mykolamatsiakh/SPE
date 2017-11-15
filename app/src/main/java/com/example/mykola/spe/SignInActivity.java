@@ -147,7 +147,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     @Override
     public void onClick(View v) {
         if(!lacksInternetConnection()) {
-            signIn();
+            startFirstQuestionActivity();
         }
         else showConnectionError();
     }
