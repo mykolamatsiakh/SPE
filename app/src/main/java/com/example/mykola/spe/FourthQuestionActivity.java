@@ -51,7 +51,7 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
     private boolean checkInput() {
         String DaysPerMonth = mEditText.getText().toString().trim();
         int Days = Integer.valueOf(DaysPerMonth);
-        return Days <= 21;
+        return Days <= 21 && Days > 0;
     }
 
     private void showToast(String message) {

@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-    <activity android:name=".SignInActivity">
+    <activity android:name=".SignInActivity"
+                android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -27,17 +28,23 @@
     </activity>
 
     <activity
-        android:name=".FirstQuestionActivity"/>
+        android:name=".FirstQuestionActivity"
+        android:screenOrientation="portrait"/>
     <activity
-        android:name=".SecondQuestionActivity"/>
+        android:name=".SecondQuestionActivity"
+        android:screenOrientation="portrait"/>
     <activity
-        android:name=".ThirdQuestionActivity"/>
+        android:name=".ThirdQuestionActivity"
+        android:screenOrientation="portrait"/>
     <activity
-        android:name=".FourthQuestionActivity"/>
+        android:name=".FourthQuestionActivity"
+        android:screenOrientation="portrait"/>
     <activity
-        android:name=".FifthQuestionActivity"/>
+        android:name=".FifthQuestionActivity"
+        android:screenOrientation="portrait"/>
     <activity
-        android:name=".ThanksActivity" />
+        android:name=".ThanksActivity"
+        android:screenOrientation="portrait"/>
     </application>
 
     </manifest>

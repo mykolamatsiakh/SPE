@@ -13,13 +13,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.StringRes;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.NotificationCompat;
+
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -197,7 +199,12 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
             }
             saveEvents(mEvents);
             }
+            else showToast("Ви не ввели бюджет, який готові виділити на цей період");
         }
+
+    private void showToast(String message) {
+        Toast.makeText(FifthQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
 
     private void scheduleNotification(Notification notification) {
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);

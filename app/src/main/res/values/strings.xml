@@ -65,7 +65,7 @@
     <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
          from https://console.developers.google.com/ -->
     <string name="server_client_id">YOUR_SERVER_CLIENT_ID</string>
-    <string name="fifth_question">Який місячний бюджет Ви готові виділити?</string>
+    <string name="fifth_question">Який бюджет Ви готові вкласти у стосунки на цей період?</string>
     <string name="next_button">Далі</string>
     <string name="thanks_string"> Дякуємо! Зайдіть у свій Ґуґл-Календар і у верхньому лівому рядку натисніть "Оновити".\n</string>
     

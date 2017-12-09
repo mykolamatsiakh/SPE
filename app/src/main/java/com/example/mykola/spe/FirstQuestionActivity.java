@@ -54,53 +54,10 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
         super.onStart();
 if (lacksPermissions()) {
     requestPermission();
+    displayAlertMessagePolicy();
 }
-//showDialog();
     }
-//    private void showDialog() {
-//        final View checkBoxView = View.inflate(this, R.layout.checkbox, null);
-//        final CheckBox checkBox = (CheckBox) checkBoxView.findViewById(R.id.checkbox);
-//        checkBox.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                // Save to shared preferences
-//                if(isChecked){
-//                    checkBoxView.setEnabled(true);
-//                }
-//            }
-//        });
-//        checkBox.setText("Я погоджуюся з правилами");
-//        final AlertDialog dialog = new Builder(mContext)
-//                .setTitle("Private policy")
-//                .setMessage("Дана програма це більше гра, ніж додаток, який бере відповідальність за Ваші стосунки")
-//                .setView(checkBoxView)
-//                .setCancelable(false)
-//                .setPositiveButton("Yes", null)
-//                .create();
-//
-//
-//        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-//
-//            @Override
-//            public void onShow(final DialogInterface dialog) {
-//
-//                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-//                button.setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View view) {
-//                        // TODO Do something
-//                        if(checkBoxView.isEnabled()){
-//                            dialog.cancel();
-//                        }
-//                        //Dismiss once everything is OK.
-//                        dialog.dismiss();
-//                    }
-//                });
-//            }
-//        });
-//        dialog.show();
-//    }
+
 
 
     private boolean lacksPermissions() {
@@ -114,6 +71,19 @@ if (lacksPermissions()) {
     private boolean lacksPermission(String permission) {
         return ContextCompat.checkSelfPermission(FirstQuestionActivity.this, permission)
                 != PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void displayAlertMessagePolicy() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Дана програма це більше гра, ніж додаток, який бере відповідальність за Ваші стосунки")
+                .setCancelable(false)
+                .setPositiveButton("Так", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void requestPermission() {
@@ -138,10 +108,10 @@ if (lacksPermissions()) {
                     Intent intent = new Intent(FirstQuestionActivity.this, SecondQuestionActivity.class);
                     startActivity(intent);
                 }
-                else showToast("Сума повинна бути 100%!");
+                else showToast("Сума  вдалих і невдалих днів повинна разом дорівнювати 100%!");
         }
         else
-            showToast("Сума повинна бути 100%!");
+            showToast("Сума  вдалих і невдалих днів повинна разом дорівнювати 100%");
 
     }
 
