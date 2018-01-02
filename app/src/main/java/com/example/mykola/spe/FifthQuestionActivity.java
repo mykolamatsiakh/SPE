@@ -22,7 +22,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
@@ -45,14 +44,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.TimeZone;
 
-import static android.R.attr.description;
-import static android.view.View.VISIBLE;
-
 
 /**
  * Created by mykola on 04.07.17.
  */
-//bla bla
+
 
 public class FifthQuestionActivity extends AppCompatActivity implements View.OnClickListener {
     EditText mEditText;
@@ -62,13 +58,16 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
     final List<Event> mEvents = new ArrayList<>();
     List<String> description = new ArrayList<>();
     List<String> second_description = new ArrayList<>();
+    List<String> push_up_phrases = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String[] phrases = getResources().getStringArray(R.array.push_up_phrases);
         String[] array = getResources().getStringArray(R.array.events_string);
         String[] second_array = getResources().getStringArray(R.array.events_string_2);
         description = Arrays.asList(array);
         second_description = Arrays.asList(second_array);
+        push_up_phrases = Arrays.asList(phrases);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
@@ -100,103 +99,20 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
             mEvents.clear();
             int min = 9;
             int max = 22;
+            int firstPhraseIndex = 0;
+            int lastPhraseIndex = push_up_phrases.size();
             mProgressbar.setVisibility(View.VISIBLE);
-            if (mMonthBudget <= 10) {
                 for (int i = 1; i <= mDays; i++) {
                     Random r = new Random();
                     Random t = new Random();
+                    Random phraseStart = new Random();
                     int anotherHour = t.nextInt(max - min + 1) + min;
                     int hour = r.nextInt(max - min + 1) + min;
+                    int phraseIndex = phraseStart.nextInt(lastPhraseIndex -  firstPhraseIndex + 1)+firstPhraseIndex;
                     mEvents.add(createEvent(description.get(i), i, hour));
                     mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                    scheduleNotification(makeNotification());
+                    scheduleNotification(makeNotification(push_up_phrases.get(phraseIndex)), i, hour);
                 }
-            } else if (mMonthBudget > 10 && mMonthBudget <= 50) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                    scheduleNotification(makeNotification());
-                }
-            } else if (mMonthBudget > 50 && mMonthBudget <= 100) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                    scheduleNotification(makeNotification());
-                }
-            } else if (mMonthBudget > 100 && mMonthBudget <= 200) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                    scheduleNotification(makeNotification());
-                }
-            } else if (mMonthBudget > 200 && mMonthBudget <= 400) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                    scheduleNotification(makeNotification());
-                }
-            } else if (mMonthBudget > 400 && mMonthBudget <= 600) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                }
-            } else if (mMonthBudget > 600 && mMonthBudget <= 1000) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                }
-            } else if (mMonthBudget > 1000 && mMonthBudget <= 2000) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                }
-            } else if (mMonthBudget > 2000 && mMonthBudget <= 4000) {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                }
-            } else {
-                for (int i = 1; i < mDays; i++) {
-                    Random r = new Random();
-                    Random t = new Random();
-                    int anotherHour = t.nextInt(max - min + 1) + min;
-                    int hour = r.nextInt(max - min + 1) + min;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                }
-            }
             saveEvents(mEvents);
             }
             else showToast("Ви не ввели бюджет, який готові виділити на цей період");
@@ -206,14 +122,15 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         Toast.makeText(FifthQuestionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void scheduleNotification(Notification notification) {
+    private void scheduleNotification(Notification notification, int day, int hour) {
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        long futureInMillis = SystemClock.elapsedRealtime() + 3600000 * randomize() ;
+        long futureInMillis = SystemClock.elapsedRealtime() + pickDate(day, hour) ;
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+
     }
 
     private int randomize() {
@@ -223,13 +140,13 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         return randomTime.nextInt(max - min + 1) + min;
     }
 
-    private Notification makeNotification() {
-        NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+    private Notification makeNotification(String notificationText) {
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round))
-                .setContentTitle("Чисте місто")
+                .setContentTitle("Be hero for your woman")
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setContentText("Дякуємо за те, що робите місто чистішим")
+                .setContentText(notificationText)
                 .setAutoCancel(true);
         return mBuilder.build();
 

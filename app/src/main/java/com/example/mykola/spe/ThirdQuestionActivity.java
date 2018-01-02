@@ -49,7 +49,9 @@ public class ThirdQuestionActivity extends AppCompatActivity implements View.OnC
             int RelationsLevel = Integer.valueOf(willingLevel);
             if (RelationsLevel <= 100 && RelationsLevel >= 1 && RelationsLevel > current_level) {
                 return true;
-            } else return false;
+            } else
+                showToast("Ваш бажаний рівень менший за поточний");
+                return false;
         } else return false;
     }
 
