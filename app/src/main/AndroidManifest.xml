@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mykola.spe">
+    package="com.spe.behero.screen">
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-    <activity android:name=".SignInActivity"
+    <activity android:name="com.spe.behero.screen.SignInActivity"
                 android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -28,22 +28,22 @@
     </activity>
 
     <activity
-        android:name=".FirstQuestionActivity"
+        android:name="com.spe.behero.screen.FirstQuestionActivity"
         android:screenOrientation="portrait"/>
     <activity
-        android:name=".SecondQuestionActivity"
+        android:name="com.spe.behero.screen.SecondQuestionActivity"
         android:screenOrientation="portrait"/>
     <activity
-        android:name=".ThirdQuestionActivity"
+        android:name="com.spe.behero.screen.ThirdQuestionActivity"
         android:screenOrientation="portrait"/>
     <activity
-        android:name=".FourthQuestionActivity"
+        android:name="com.spe.behero.screen.FourthQuestionActivity"
         android:screenOrientation="portrait"/>
     <activity
-        android:name=".FifthQuestionActivity"
+        android:name="com.spe.behero.screen.FifthQuestionActivity"
         android:screenOrientation="portrait"/>
     <activity
-        android:name=".ThanksActivity"
+        android:name="com.spe.behero.screen.ThanksActivity"
         android:screenOrientation="portrait"/>
     </application>
 
