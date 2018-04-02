@@ -1,45 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGrey">
+    android:background="@drawable/thanks_background">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:paddingTop="10dp"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:background="@drawable/spe_logo"
-        android:layout_marginTop="57dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:paddingStart="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="33dp"
-        android:text="@string/thanks_string"
-        android:textSize="23sp"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@+id/imageView"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/finish_button"
-        android:layout_width="120dp"
+        android:layout_width="160dp"
         android:layout_height="40dp"
+        android:layout_marginTop="450dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/next_button"
         android:text="@string/ok"
         android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/next_button"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp" />
+        android:textColor="#303f9f"
+        android:textSize="20sp" />
 
 
-</RelativeLayout>
+</LinearLayout>

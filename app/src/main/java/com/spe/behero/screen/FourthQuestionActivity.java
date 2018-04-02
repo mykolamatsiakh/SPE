@@ -20,12 +20,8 @@ public class FourthQuestionActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fourth_question);
         findViewById(R.id.next_button4).setOnClickListener(this);
-        mEditText = (EditText) findViewById(R.id.daysPerMonth);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(null);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mEditText =  findViewById(R.id.daysPerMonth);
+        findViewById(R.id.back_button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

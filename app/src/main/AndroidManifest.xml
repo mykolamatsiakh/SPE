@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-    <activity android:name="com.spe.behero.screen.SignInActivity"
+    <activity   android:name="com.spe.behero.screen.SignInActivity"
                 android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -29,19 +29,24 @@
 
     <activity
         android:name="com.spe.behero.screen.FirstQuestionActivity"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateVisible"/>
     <activity
         android:name="com.spe.behero.screen.SecondQuestionActivity"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateVisible"/>
     <activity
         android:name="com.spe.behero.screen.ThirdQuestionActivity"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateVisible"/>
     <activity
         android:name="com.spe.behero.screen.FourthQuestionActivity"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateVisible"/>
     <activity
         android:name="com.spe.behero.screen.FifthQuestionActivity"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateVisible"/>
     <activity
         android:name="com.spe.behero.screen.ThanksActivity"
         android:screenOrientation="portrait"/>

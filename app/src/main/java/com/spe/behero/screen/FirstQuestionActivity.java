@@ -12,6 +12,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,9 +38,34 @@ public class FirstQuestionActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_question);
-        SuccesfullDays = (EditText) findViewById(R.id.first_question_succesfull);
-        UnsuccesfulDays = (EditText) findViewById(R.id.first_question_unsuccesfull);
+        SuccesfullDays = findViewById(R.id.first_question_succesfull);
+        UnsuccesfulDays = findViewById(R.id.first_question_unsuccesfull);
         findViewById(R.id.first_next_button).setOnClickListener(this);
+        findViewById(R.id.back_button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        SuccesfullDays.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if(SuccesfullDays.getText().toString().length()==1)     //size as per your requirement
+                {
+                    UnsuccesfulDays.requestFocus();
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override

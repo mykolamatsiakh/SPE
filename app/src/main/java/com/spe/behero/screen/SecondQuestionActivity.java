@@ -19,12 +19,9 @@ public class SecondQuestionActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_question);
-        relationsLevel = (EditText) findViewById(R.id.relationsLevel);
+        relationsLevel =  findViewById(R.id.relationsLevel);
         findViewById(R.id.next_button_2).setOnClickListener(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(null);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.back_button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

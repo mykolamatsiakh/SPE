@@ -6,6 +6,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.os.AsyncTask;
@@ -62,30 +63,34 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String[] phrases = getResources().getStringArray(R.array.push_up_phrases);
-        String[] array = getResources().getStringArray(R.array.events_string);
-        String[] second_array = getResources().getStringArray(R.array.events_string_2);
-        description = Arrays.asList(array);
-        second_description = Arrays.asList(second_array);
-        push_up_phrases = Arrays.asList(phrases);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fifth_question);
-        findViewById(R.id.next_button5).setOnClickListener(this);
-        mEditText = (EditText) findViewById(R.id.monthBudget);
-        mProgressbar = (ProgressBar) findViewById(R.id.progress_loader);
-                mCredentials = GoogleAccountCredential.usingOAuth2(
-                getApplicationContext(), Arrays.asList(SCOPES))
-                .setBackOff(new ExponentialBackOff())
-                .setSelectedAccountName(AppAccount.getInstance(FifthQuestionActivity.this).getName());
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(null);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.back_button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
+        String[] phrases = getResources().getStringArray(R.array.push_up_phrases);
+        String[] array = getResources().getStringArray(R.array.events_string);
+        String[] second_array = getResources().getStringArray(R.array.events_string_2);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("Your_Shared_Prefs",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        description = Arrays.asList(array);
+        second_description = Arrays.asList(second_array);
+        push_up_phrases = Arrays.asList(phrases);
+        for(int i = 0; i<array.length; i++){
+            Log.d("Порада: ", description.get(i));
+        }
+        Log.d("Розмір масиву", String.valueOf(array.length));
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fifth_question);
+        findViewById(R.id.next_button5).setOnClickListener(this);
+        mEditText = findViewById(R.id.monthBudget);
+        mProgressbar = findViewById(R.id.progress_loader);
+                mCredentials = GoogleAccountCredential.usingOAuth2(
+                getApplicationContext(), Arrays.asList(SCOPES))
+                .setBackOff(new ExponentialBackOff())
+                .setSelectedAccountName(AppAccount.getInstance(FifthQuestionActivity.this).getName());
     }
 
 
@@ -105,13 +110,17 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
                 for (int i = 1; i <= mDays; i++) {
                     Random r = new Random();
                     Random t = new Random();
+                    Random foo = new Random();
+                    int randomNumber = foo.nextInt((54 + 1)) + 0;
+                    Random foo2 = new Random();
+                    int randomNumber2 = foo2.nextInt((54 + 1)) + 0;
                     Random phraseStart = new Random();
                     int anotherHour = t.nextInt(max - min + 1) + min;
                     int hour = r.nextInt(max - min + 1) + min;
                     int phraseIndex = phraseStart.nextInt(lastPhraseIndex -  firstPhraseIndex + 1)+firstPhraseIndex;
-                    mEvents.add(createEvent(description.get(i), i, hour));
-                    mEvents.add(createEvent(second_description.get(i), i, anotherHour));
-                    scheduleNotification(makeNotification(push_up_phrases.get(phraseIndex)), i, hour);
+                    mEvents.add(createEvent(description.get(randomNumber), i, hour));
+                    mEvents.add(createEvent(description.get(randomNumber2), i, anotherHour));
+//                    scheduleNotification(makeNotification(push_up_phrases.get(phraseIndex)), i, hour);
                 }
             saveEvents(mEvents);
             }

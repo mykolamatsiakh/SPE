@@ -2,18 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/second">
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/toolbar"/>
+    android:background="@drawable/question_activity">
+
+    <ImageButton
+        android:id="@+id/back_button2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_be_a_hero__icons_14"
+        android:background="@null"/>
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textColor="@color/colorBlack"
         android:text="@string/second_question"
-        android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="220dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/textView3" />
@@ -22,24 +27,23 @@
         android:id="@+id/relationsLevel"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:inputType="number"
+       android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
         android:hint="    1-100"
-        android:layout_gravity = "center"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/next_button_2"
-        android:layout_width="100dp"
+        android:layout_width="168dp"
         android:layout_height="40dp"
-        android:text="@string/next_button"
-        android:textSize="20sp"
-        android:textColor="@color/colorWhite"
+        android:layout_marginTop="470dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/next_button"
+        android:text="@string/next_button"
         android:textAllCaps="false"
-        android:layout_marginTop="22dp"
-        android:layout_below="@+id/relationsLevel"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#303f9f"
+        android:textSize="20sp"  />
 
 
 </RelativeLayout>

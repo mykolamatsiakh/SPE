@@ -21,10 +21,7 @@ public class ThirdQuestionActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.third_question);
         findViewById(R.id.next_button3).setOnClickListener(this);
         WillingLevel = (EditText) findViewById(R.id.willingLevel);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(null);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.back_button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

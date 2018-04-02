@@ -1,63 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/second">
+    android:background="@drawable/question_activity">
+
+    <ImageButton
+        android:id="@+id/back_button1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_be_a_hero__icons_14"
+        android:background="@null"/>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:text="@string/first_question"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="220dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/textView" />
+
     <EditText
         android:id="@+id/first_question_succesfull"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:inputType="number"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="120dp"
+        android:background="@android:color/transparent"
         android:hint="@string/succesfull"
-        android:layout_marginStart="80dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:textColor="@color/colorWhite"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="170dp"
         android:text="/"
-        android:textSize="26sp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="115dp"
-        />
+        android:textSize="26sp" />
 
     <EditText
         android:id="@+id/first_question_unsuccesfull"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:inputType="number"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="190dp"
+        android:textColor="@color/colorWhite"
+        android:background="@android:color/transparent"
         android:hint="@string/unsuccessful"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView2"/>
+        android:inputType="number" />
 
     <Button
         android:id="@+id/first_next_button"
-        android:layout_width="100dp"
+        android:layout_width="168dp"
         android:layout_height="40dp"
-        android:text="@string/next_button"
-        android:textSize="20sp"
-        android:layout_below="@+id/first_question_succesfull"
+        android:layout_marginTop="470dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/next_button"
+        android:text="@string/next_button"
         android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/next_button"/>
+        android:textColor="#303f9f"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
