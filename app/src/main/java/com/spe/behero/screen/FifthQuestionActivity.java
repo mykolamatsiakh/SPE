@@ -63,6 +63,7 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.fifth_question);
         findViewById(R.id.back_button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +84,6 @@ public class FifthQuestionActivity extends AppCompatActivity implements View.OnC
         }
         Log.d("Розмір масиву", String.valueOf(array.length));
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fifth_question);
         findViewById(R.id.next_button5).setOnClickListener(this);
         mEditText = findViewById(R.id.monthBudget);
         mProgressbar = findViewById(R.id.progress_loader);

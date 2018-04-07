@@ -34,7 +34,7 @@ dependencies {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation 'com.google.android.gms:play-services-auth:12.0.1'
-    final SUPPORT_LIBRARY_VERSION = '27.1.0'
+    final SUPPORT_LIBRARY_VERSION = '27.1.1'
     implementation "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
     implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
     implementation "com.android.support:support-core-utils:$SUPPORT_LIBRARY_VERSION"
@@ -43,8 +43,8 @@ dependencies {
     implementation "com.google.android.gms:play-services-maps:$PLAY_SERVICES_VERSION"
     implementation "com.google.android.gms:play-services-location:$PLAY_SERVICES_VERSION"
     implementation "com.google.android.gms:play-services-places:$PLAY_SERVICES_VERSION"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'me.relex:circleindicator:1.2.2@aar'
-    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'me.relex:circleindicator:1.2.2@aar'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 }
 

@@ -11,6 +11,13 @@
         android:src="@drawable/ic_be_a_hero__icons_14"
         android:background="@null"/>
 
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src = "@drawable/ic_heart_spe"
+        android:background="@null"
+        android:layout_alignParentEnd="true"/>
+
     <TextView
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -18,7 +25,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="240dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/textView3" />
@@ -37,7 +44,7 @@
         android:id="@+id/next_button_2"
         android:layout_width="168dp"
         android:layout_height="40dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="460dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/next_button"
         android:text="@string/next_button"
@@ -45,5 +52,18 @@
         android:textColor="#303f9f"
         android:textSize="20sp"  />
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="515dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/ic_flash"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="515dp"
+        android:layout_marginStart="110dp"
+        android:background="@drawable/ic_flash"/>
 
 </RelativeLayout>

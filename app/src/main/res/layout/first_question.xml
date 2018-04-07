@@ -18,26 +18,37 @@
         android:src="@drawable/ic_be_a_hero__icons_14"
         android:background="@null"/>
 
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src = "@drawable/ic_heart_spe"
+        android:background="@null"
+        android:layout_alignParentEnd="true"/>
+
     <TextView
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:text="@string/first_question"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
-
         android:layout_marginStart="100dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="240dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/textView" />
-
+<RelativeLayout
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_below="@id/textView"
+    android:layout_marginTop="60dp"
+    android:orientation="vertical"
+    android:layout_centerHorizontal="true">
     <EditText
         android:id="@+id/first_question_succesfull"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginStart="120dp"
         android:background="@android:color/transparent"
+        android:textAlignment="textEnd"
         android:hint="@string/succesfull"
         android:textColor="@color/colorWhite"
         android:inputType="number" />
@@ -46,8 +57,8 @@
         android:id="@+id/textView2"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:layout_marginStart="170dp"
+        android:layout_toEndOf="@id/first_question_succesfull"
+        android:layout_marginStart="10dp"
         android:text="/"
         android:textSize="26sp" />
 
@@ -55,9 +66,9 @@
         android:id="@+id/first_question_unsuccesfull"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginStart="190dp"
         android:textColor="@color/colorWhite"
+        android:textAlignment="textStart"
+        android:layout_toEndOf="@id/textView2"
         android:background="@android:color/transparent"
         android:hint="@string/unsuccessful"
         android:inputType="number" />
@@ -66,14 +77,21 @@
         android:id="@+id/first_next_button"
         android:layout_width="168dp"
         android:layout_height="40dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/next_button"
         android:text="@string/next_button"
         android:textAllCaps="false"
         android:textColor="#303f9f"
         android:textSize="20sp" />
+</RelativeLayout>
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="515dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/ic_flash"/>
 
 </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
